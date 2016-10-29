@@ -4,7 +4,12 @@ var Player = function( playerID ) {
 	this.mesh;
 
 	var cube_geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	var cube_material = new THREE.MeshBasicMaterial( {color: 0x7777ff, wireframe: false} );
+	
+	var red = Math.floor(Math.random()*120+120);
+	var green = Math.floor(Math.random()*120+120);
+	var blue = Math.floor(Math.random()*120+120);
+	var clr = (red << 16) | (green << 8) | blue;
+	var cube_material = new THREE.MeshBasicMaterial( {color: clr, wireframe: true} );
 
 	var scope = this;
 
