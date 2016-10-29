@@ -7,7 +7,9 @@
           "orientation": {
             "$orientation_type": {
               "$orientation_axis": {
-                ".validate": "(!data.exists() || !newData.exists()) || (newData.isNumber() && (newData.val() - data.val() < 1) && (newData.val() - data.val() > -1))"
+                ".validate": "(!data.exists()
+								|| !newData.exists())
+								|| (newData.isNumber() && (newData.val() - data.val() < 1) && (newData.val() - data.val() > -1))"
               }
             }
           }

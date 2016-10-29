@@ -51,12 +51,28 @@ function listenToOtherPlayers() {
 
 function initMainPlayer() {
 
+  // gotta render the clr first, and then init.
+	var red = Math.floor(Math.random()*120+120);
+	var green = Math.floor(Math.random()*120+120);
+	var blue = Math.floor(Math.random()*120+120);
+	var clr = (red << 16) | (green << 8) | blue;
+	var cube_material = new THREE.MeshBasicMaterial( {color: clr, wireframe: false} );
+
+  var scope = this;
+
+  function getCubeMaterial() {
+      console.log("cube_material");
+      console.log(cube_material);
+      return cube_material;
+  }
+
 	fbRef.child( "Players/" + playerID ).set({
 		isOnline: true,
 		orientation: {
 			position: {x: 0, y:0, z:0},
 			rotation: {x: 0, y:0, z:0}
-		}
+		},
+    color: clr
 	});
 
 	player = new Player( playerID );

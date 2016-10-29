@@ -4,17 +4,11 @@ var Player = function( playerID ) {
 	this.mesh;
 
 	var cube_geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	
-	var red = Math.floor(Math.random()*120+120);
-	var green = Math.floor(Math.random()*120+120);
-	var blue = Math.floor(Math.random()*120+120);
-	var clr = (red << 16) | (green << 8) | blue;
-	var cube_material = new THREE.MeshBasicMaterial( {color: clr, wireframe: false} );
 
 	var scope = this;
 
 	this.init = function() {
-		scope.mesh = new THREE.Mesh( cube_geometry, cube_material );
+		scope.mesh = new THREE.Mesh( cube_geometry, this.getCubeMaterial );
 		scene.add( scope.mesh );
 
 		if ( scope.isMainPlayer ) {
