@@ -9,7 +9,7 @@ var Player = function( playerID ) {
 	var green = Math.floor(Math.random()*120+120);
 	var blue = Math.floor(Math.random()*120+120);
 	var clr = (red << 16) | (green << 8) | blue;
-	var cube_material = new THREE.MeshBasicMaterial( {color: clr, wireframe: true} );
+	var cube_material = new THREE.MeshBasicMaterial( {color: clr, wireframe: false} );
 
 	var scope = this;
 
