@@ -3,8 +3,8 @@ var container, scene, camera, renderer;
 var controls;
 
 init();
-//console.log("before animate");
-animate(player);
+
+animate();
 
 function init() {
 	// Setup
@@ -32,7 +32,7 @@ function init() {
 
 				if ( isOnline.val() === null || isOnline.val() === false ) {
 					loadGame();
-					
+
 				} else {
 					alert( "Hey, only one session at a time buddy!" );
 				}
@@ -57,41 +57,13 @@ function init() {
 	document.body.appendChild( container );
 }
 
-function animate(player) {
+function animate() {
 	requestAnimationFrame( animate );
 
 	if ( controls ) {
 		controls.update();
 	}
-	
-	var collisionTime = 0;
-	for (var vertexIndex = 0; vertexIndex < player.cube_geometry,vertices.length; vertexIndex++) {   
-		var localVertex = player.cube_geometry.vertices[vertexIndex].clone();  
-		//document.write(typeof(localVertex));
-		var globalVertex = localVertex.applyMatrix4(player.matrix);   
-		var directionVector = globalVertex.sub(player.position); // RAY Casting Function   
-		var ray = new THREE.Raycaster(player.position, directionVector.clone().normalize());   
-		var collisionResults = ray.intersectObjects(otherPlayers);  
-		if (collisionResults.length > 0 && collisionResults[0].distance < directionVector.length()) {   
-			cld = true;
-		}
-	}
-	if (cld) {
-		collisionTime = collisionTime + 0.01666666666;
-		//console.log(collisionTime);
-		if ( collisionTime > 1) {
-			console.log("Over one second!");
-			//var temp = scube.material.color.getHex();
-			//scube.material.color.setHex(cube.material.color.getHex());
-			cube.material.color.setHex(clr);
-			collisionTime = 0;
-		}
-	}
-	else {
-		collisionTime = 0;
-	}
-	cld = false;
-	
+
 	render();
 }
 

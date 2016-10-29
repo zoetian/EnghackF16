@@ -61,8 +61,6 @@ function initMainPlayer() {
   var scope = this;
 
   function getCubeMaterial() {
-      console.log("cube_material");
-      console.log(cube_material);
       return cube_material;
   }
 
